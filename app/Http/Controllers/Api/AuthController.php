@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use OpenApi\Annotations as OA;
 
@@ -43,7 +42,8 @@ class AuthController extends Controller
             return response()->json(['message' => 'Account is inactive'], 403);
         }
 
-        Auth::login($user);
+        // Token-based API auth does not require web session login.
+        // Avoid session driver/table dependency issues on production.
         $token = $user->createToken('pos-token')->plainTextToken;
 
         return response()->json([

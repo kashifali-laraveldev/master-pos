@@ -12,7 +12,10 @@ class IdentifyTenant
     public function handle(Request $request, Closure $next): Response
     {
         $tenant = null;
-        $tenantId = $request->header('X-Tenant-Id');
+        $tenantId = $request->header('X-Tenant-Id')
+            ?: $request->header('X-Tenant')
+            ?: $request->input('tenant_id')
+            ?: $request->query('tenant_id');
 
         if ($tenantId) {
             $tenant = Tenant::query()->find($tenantId);
@@ -24,6 +27,12 @@ class IdentifyTenant
             if ($subdomain && ! in_array($subdomain, ['www', 'localhost', '127'], true)) {
                 $tenant = Tenant::query()->where('id', $subdomain)->first();
             }
+        }
+
+        // For authenticated routes, fallback to the user's tenant when
+        // tenant header/subdomain is not provided (common in Swagger usage).
+        if (! $tenant && $request->user()?->tenant_id) {
+            $tenant = Tenant::query()->find($request->user()->tenant_id);
         }
 
         if (! $tenant || $tenant->status !== 'active') {

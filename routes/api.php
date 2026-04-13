@@ -22,7 +22,7 @@ Route::middleware('tenant.identify')->group(function () {
 });
 
 // Protected
-Route::middleware(['throttle:api', 'tenant.identify', 'auth:sanctum', 'tenant.user', 'subscription'])->group(function () {
+Route::middleware(['throttle:api', 'auth:sanctum', 'tenant.identify', 'tenant.user', 'subscription'])->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::get('/auth/me', [AuthController::class, 'me']);
 

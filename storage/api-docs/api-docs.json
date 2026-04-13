@@ -12,21 +12,51 @@
                 ],
                 "summary": "Tenant registration",
                 "operationId": "c5e8e8e41a51293347500f40124c8c4f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "business_name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Ali Raza"
+                                    },
+                                    "business_name": {
+                                        "type": "string",
+                                        "example": "Demo Store"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "owner@masterpos.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "demo1234"
+                                    },
+                                    "plan": {
+                                        "type": "string",
+                                        "example": "free"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
+                    "201": {
+                        "description": "Created"
                     },
                     "422": {
                         "description": "Validation error"
-                    },
-                    "404": {
-                        "description": "Not found"
                     }
                 }
             }
@@ -38,6 +68,45 @@
                 ],
                 "summary": "Login",
                 "operationId": "c856e4dbb8a5825e43262b34c4efd58e",
+                "parameters": [
+                    {
+                        "name": "X-Tenant-Id",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "demo-tenant"
+                        },
+                        "example": "demo-tenant"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "demo@masterpos.com",
+                                        "default": "demo@masterpos.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "demo1234",
+                                        "default": "demo1234"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -50,9 +119,6 @@
                     },
                     "422": {
                         "description": "Validation error"
-                    },
-                    "404": {
-                        "description": "Not found"
                     }
                 }
             }
@@ -126,6 +192,17 @@
                 ],
                 "summary": "List products",
                 "operationId": "82f7aacf056f9f5e6fddad03cd3fcbaf",
+                "parameters": [
+                    {
+                        "name": "X-Tenant-Id",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "demo-tenant"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -155,6 +232,69 @@
                 ],
                 "summary": "Create product",
                 "operationId": "41c190c9b201a1ab143edf990f78269c",
+                "parameters": [
+                    {
+                        "name": "X-Tenant-Id",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "demo-tenant"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "category_id": {
+                                        "type": "integer",
+                                        "default": 1
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "default": "Basmati Chawal 1kg"
+                                    },
+                                    "sku": {
+                                        "type": "string",
+                                        "default": "KR-CH-1001"
+                                    },
+                                    "unit_type": {
+                                        "type": "string",
+                                        "default": "piece"
+                                    },
+                                    "unit_label": {
+                                        "type": "string",
+                                        "default": "pack"
+                                    },
+                                    "stock_unit": {
+                                        "type": "string",
+                                        "default": "pack"
+                                    },
+                                    "price_per_unit": {
+                                        "type": "number",
+                                        "default": 420
+                                    },
+                                    "cost_price": {
+                                        "type": "number",
+                                        "default": 360
+                                    },
+                                    "stock_quantity": {
+                                        "type": "number",
+                                        "default": 50
+                                    },
+                                    "low_stock_alert": {
+                                        "type": "integer",
+                                        "default": 8
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -186,6 +326,26 @@
                 ],
                 "summary": "Get product",
                 "operationId": "ced34e612546ba0c6ba9bbe87441e7ea",
+                "parameters": [
+                    {
+                        "name": "X-Tenant-Id",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "demo-tenant"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -215,6 +375,46 @@
                 ],
                 "summary": "Update product",
                 "operationId": "acc25426b1c38238b053ede126c1df20",
+                "parameters": [
+                    {
+                        "name": "X-Tenant-Id",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "demo-tenant"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "price_per_unit": {
+                                        "type": "number",
+                                        "default": 450
+                                    },
+                                    "low_stock_alert": {
+                                        "type": "integer",
+                                        "default": 10
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -244,6 +444,26 @@
                 ],
                 "summary": "Delete product",
                 "operationId": "f7c42f1a9a04a5d790590bbece6b3d9c",
+                "parameters": [
+                    {
+                        "name": "X-Tenant-Id",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "demo-tenant"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -306,6 +526,17 @@
                 ],
                 "summary": "List categories",
                 "operationId": "03815b96b745cb567e6336e9df60db2b",
+                "parameters": [
+                    {
+                        "name": "X-Tenant-Id",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "demo-tenant"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -335,6 +566,41 @@
                 ],
                 "summary": "Create category",
                 "operationId": "1f6447056582533ae96bb76c69ab9dda",
+                "parameters": [
+                    {
+                        "name": "X-Tenant-Id",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "demo-tenant"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "default": "Atta & Flour"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "default": "Gandum atta aur flour items"
+                                    },
+                                    "color": {
+                                        "type": "string",
+                                        "default": "#f59e0b"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -366,6 +632,26 @@
                 ],
                 "summary": "Update category",
                 "operationId": "34148c48f7af995db369274667c2e2fc",
+                "parameters": [
+                    {
+                        "name": "X-Tenant-Id",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "demo-tenant"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -395,6 +681,26 @@
                 ],
                 "summary": "Delete category",
                 "operationId": "02a2122b80be2ca8b2f5305a51c18910",
+                "parameters": [
+                    {
+                        "name": "X-Tenant-Id",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "demo-tenant"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success"
