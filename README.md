@@ -11,7 +11,7 @@
 
 **A full-featured, multi-tenant Point of Sale system built with Laravel + Vue.js**
 
-[🌐 Live Demo](https://demo-master-pos.kitsoftsol.com/) • [⚙️ API Backend](https://demo-backend-master-pos.kitsoftsol.com/) • [👨‍💼 LinkedIn](https://www.linkedin.com/in/kashif-ali-39659518a/) • [🌐 Portfolio](https://kashifali-laraveldev.kitsoftsol.com) • [📧 Email](mailto:alikashi54321@gmail.com) • [📞 Contact](tel:+923057502419)
+[🌐 Live Demo](https://demo-master-pos.kitsoftsol.com/) • [⚙️ API Backend](https://demo-backend-master-pos.kitsoftsol.com/) • [📧 Contact](mailto:your@email.com)
 
 > **Demo Credentials:** `demo@masterpos.com` / `demo1234`
 
@@ -465,10 +465,7 @@ master-pos/
 
 ## 📞 Contact
 
-LinkedIn: https://www.linkedin.com/in/kashif-ali-39659518a/  
-Portfolio: https://kashifali-laraveldev.kitsoftsol.com  
-Email: alikashi54321@gmail.com  
-Contact: +923057502419
+Built by **KitSoft Solutions** — [kitsoftsol.com](https://kitsoftsol.com)
 
 Feel free to reach out for custom POS solutions, white-label licensing, or freelance inquiries.
 
