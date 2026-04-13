@@ -2,16 +2,16 @@
 
 <div align="center">
 
-![Master POS Banner](screenshots/pos_master_dashboard.PNG)
+![Master POS Banner](screenshots/dashboard.png)
 
-<a href="https://laravel.com" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend-Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel"></a>
-<a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Frontend-Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white" alt="Vue.js"></a>
-<a href="https://laravel.com/docs/sanctum" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Auth-Laravel_Sanctum-orange?style=for-the-badge" alt="Sanctum"></a>
+[![Laravel](https://img.shields.io/badge/Backend-Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![Vue.js](https://img.shields.io/badge/Frontend-Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org)
+[![Sanctum](https://img.shields.io/badge/Auth-Laravel_Sanctum-orange?style=for-the-badge)](https://laravel.com/docs/sanctum)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
 **A full-featured, multi-tenant Point of Sale system built with Laravel + Vue.js**
 
-<a href="https://www.linkedin.com/in/kashif-ali-39659518a/" target="_blank" rel="noopener noreferrer">👨‍💼 LinkedIn</a> • <a href="https://kashifali-laraveldev.kitsoftsol.com" target="_blank" rel="noopener noreferrer">🌐 Portfolio</a> • <a href="tel:+923057502419">📞 Contact</a>
+[🌐 Live Demo](https://demo-master-pos.kitsoftsol.com/) • [⚙️ API Backend](https://demo-backend-master-pos.kitsoftsol.com/) • [📧 Contact](mailto:your@email.com)
 
 > **Demo Credentials:** `demo@masterpos.com` / `demo1234`
 
@@ -82,70 +82,70 @@ This project demonstrates:
 ## 📸 Screenshots — Web System
 
 ### Login
-![Login Screen](screenshots/master_pos_login.PNG)
+![Login Screen](screenshots/login.png)
 
 ---
 
 ### Dashboard
 Real-time KPIs, 14-day revenue trend bar chart, payment mix donut chart, top products, low stock alerts, and recent sales feed.
 
-![Dashboard](screenshots/pos_master_dashboard.PNG)
+![Dashboard](screenshots/dashboard.png)
 
 ---
 
 ### POS Billing Board
 Touch-friendly product grid with category filter tabs, cart management, discount input, and payment method selector (Cash / Card / Bank / Credit).
 
-![POS Board](screenshots/pos_board.PNG)
+![POS Board](screenshots/pos_board.png)
 
 ---
 
 ### Products
 Full product listing with category badge, unit type, price, stock level, and edit/delete actions. Includes search and unit-type filter.
 
-![Products Listing](screenshots/products_listing.PNG)
+![Products Listing](screenshots/products.png)
 
 ---
 
 ### Add Product Form
 Modal form with all product fields: name, category, SKU, description, unit type/label, selling price, cost price, opening stock, low stock alert, featured toggle, and image upload.
 
-![Add Product Form](screenshots/add_product_form.PNG)
+![Add Product Form](screenshots/add_product.png)
 
 ---
 
 ### Categories
 Color-coded category grid showing product count, slug, active status, and edit/delete controls.
 
-![Categories](screenshots/categories_listing.PNG)
+![Categories](screenshots/categories.png)
 
 ---
 
 ### Edit Category
 Category edit modal with name, description, color picker, active checkbox, and image upload.
 
-![Edit Category](screenshots/edit_category_form.PNG)
+![Edit Category](screenshots/edit_category.png)
 
 ---
 
 ### Inventory Management
 Live stock list with product name and unit on the left, and a Stock Adjustment panel on the right — supports purchase (+), adjustment, and return types.
 
-![Inventory](screenshots/inventory_manage_screen.PNG)
+![Inventory](screenshots/inventory.png)
 
 ---
 
 ### Sales History
 Full invoice ledger filterable by date and status. Columns: Invoice number (clickable), Date, Cashier, Items, Total, Status badge, Cancel action.
 
-![Sales History](screenshots/sales_listing.PNG)
+![Sales History](screenshots/sales_history.png)
 
 ---
 
 ### Reports
 Revenue summary cards, configurable last-N-days bar chart, payment mix breakdown, and top 5 products by revenue.
 
-![Reports](screenshots/reports_screen.PNG)
+![Reports](screenshots/reports.png)
 
 ---
 
@@ -156,49 +156,49 @@ All API endpoints are documented and testable via Swagger UI.
 ### Login API — Request
 `POST /api/auth/login` with `X-Tenant-Id` header and JSON credentials.
 
-![Login Request](screenshots/swagger/login-api-request.PNG)
+![Login Request](screenshots/swagger/login_request.png)
 
 ---
 
 ### Login API — Response
 Returns user object and Bearer token on successful authentication.
 
-![Login Response](screenshots/swagger/login-api-response.PNG)
+![Login Response](screenshots/swagger/login_response.png)
 
 ---
 
 ### Dashboard Stats API
 `GET /api/dashboard/stats` — Returns today/month revenue, growth %, low stock count, avg ticket, and daily chart array.
 
-![Dashboard Stats API](screenshots/swagger/dashboard-stats.PNG)
+![Dashboard Stats API](screenshots/swagger/dashboard_stats.png)
 
 ---
 
 ### Categories Listing API
 `GET /api/categories` — Returns full category list with product counts, slugs, and colors.
 
-![Categories API](screenshots/swagger/categories-listing-api.PNG)
+![Categories API](screenshots/swagger/categories_listing.png)
 
 ---
 
 ### Products Listing API
 `GET /api/products` — Returns full product array with pricing, stock, unit info, and metadata.
 
-![Products API](screenshots/swagger/products-listing-api-response.PNG)
+![Products API](screenshots/swagger/products_listing.png)
 
 ---
 
 ### Product Create — Plan Limit Validation
 `POST /api/products` — Returns `HTTP 422` when free plan product limit (100) is exceeded.
 
-![Product Validation](screenshots/swagger/product-create-validation-response.PNG)
+![Product Validation](screenshots/swagger/product_create_validation.png)
 
 ---
 
 ### Inventory List API
 `GET /api/inventory` — Returns all products with live stock quantities and units.
 
-![Inventory API](screenshots/swagger/inventory_get_api.PNG)
+![Inventory API](screenshots/swagger/inventory_get.png)
 
 ---
 
@@ -246,7 +246,7 @@ This header resolves the correct tenant context before any authentication or bus
 
 ## 📖 API Reference
 
-**Base URL:** `https://api.masterpos.yourdomain.com/api`
+**Base URL:** `https://demo-backend-master-pos.kitsoftsol.com/api`
 
 All protected endpoints require:
 ```http
@@ -314,7 +314,7 @@ DELETE /api/users/{id}                          Remove user
 ### Login
 
 ```bash
-curl -X POST https://api.masterpos.yourdomain.com/api/auth/login \
+curl -X POST https://demo-backend-master-pos.kitsoftsol.com/api/auth/login \
   -H "X-Tenant-Id: demo-tenant" \
   -H "Content-Type: application/json" \
   -d '{ "email": "demo@masterpos.com", "password": "demo1234" }'
@@ -338,7 +338,7 @@ curl -X POST https://api.masterpos.yourdomain.com/api/auth/login \
 ### Create a Sale
 
 ```bash
-curl -X POST https://api.masterpos.yourdomain.com/api/sales \
+curl -X POST https://demo-backend-master-pos.kitsoftsol.com/api/sales \
   -H "Authorization: Bearer {token}" \
   -H "X-Tenant-Id: demo-tenant" \
   -H "Content-Type: application/json" \
@@ -353,7 +353,7 @@ curl -X POST https://api.masterpos.yourdomain.com/api/sales \
 ### Stock Adjustment
 
 ```bash
-curl -X POST https://api.masterpos.yourdomain.com/api/inventory/adjust \
+curl -X POST https://demo-backend-master-pos.kitsoftsol.com/api/inventory/adjust \
   -H "Authorization: Bearer {token}" \
   -H "X-Tenant-Id: demo-tenant" \
   -H "Content-Type: application/json" \
@@ -433,24 +433,24 @@ Plan limits are enforced at the API middleware level (`tenant.plan`). Exceeding 
 master-pos/
 ├── README.md
 └── screenshots/
-    ├── master_pos_login.PNG
-    ├── pos_master_dashboard.PNG
-    ├── pos_board.PNG
-    ├── products_listing.PNG
-    ├── add_product_form.PNG
-    ├── categories_listing.PNG
-    ├── edit_category_form.PNG
-    ├── inventory_manage_screen.PNG
-    ├── sales_listing.PNG
-    ├── reports_screen.PNG
+    ├── login.png
+    ├── dashboard.png
+    ├── pos_board.png
+    ├── products.png
+    ├── add_product.png
+    ├── categories.png
+    ├── edit_category.png
+    ├── inventory.png
+    ├── sales_history.png
+    ├── reports.png
     ├── swagger/
-    │   ├── login-api-request.PNG
-    │   ├── login-api-response.PNG
-    │   ├── dashboard-stats.PNG
-    │   ├── categories-listing-api.PNG
-    │   ├── products-listing-api-response.PNG
-    │   ├── product-create-validation-response.PNG
-    │   └── inventory_get_api.PNG
+    │   ├── login_request.png
+    │   ├── login_response.png
+    │   ├── dashboard_stats.png
+    │   ├── categories_listing.png
+    │   ├── products_listing.png
+    │   ├── product_create_validation.png
+    │   └── inventory_get.png
     └── postman/
         ├── login_request.png
         ├── login_response.png
@@ -465,10 +465,7 @@ master-pos/
 
 ## 📞 Contact
 
-Built by **Kashif Ali**  
-LinkedIn: <a href="https://www.linkedin.com/in/kashif-ali-39659518a/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/kashif-ali-39659518a/</a>  
-Portfolio: <a href="https://kashifali-laraveldev.kitsoftsol.com" target="_blank" rel="noopener noreferrer">https://kashifali-laraveldev.kitsoftsol.com</a>  
-Contact: [+92 305 7502419](tel:+923057502419)
+Built by **KitSoft Solutions** — [kitsoftsol.com](https://kitsoftsol.com)
 
 Feel free to reach out for custom POS solutions, white-label licensing, or freelance inquiries.
 
